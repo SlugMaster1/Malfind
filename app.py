@@ -100,69 +100,100 @@ def ask():
 # Asking BearcatGPT for help? Paste this part. Your key is in .env, not here.
 
 STYLE = """
-/* Make it yours: change these values first. */
+/* Cyber Theme */
 :root {
-  --brand: #e00122;      /* your project's color: header, buttons, links */
-  --page: #f4f5f7;       /* the page background */
-  --text: #1f2933;       /* normal text */
-  --muted: #6b7280;      /* small, less important text */
+  --brand: #00ff66;      /* Matrix neon green */
+  --brand-dim: #00b34d;
+  --page: #05070c;       /* Deep dark cyber background */
+  --card-bg: #0d1322;    /* Dark navy/charcoal card */
+  --text: #c9d1d9;       /* Light cyber text */
+  --muted: #8b949e;      /* Muted text */
+  --border: rgba(0, 255, 102, 0.3);
 }
 
 /* One readable column in the middle of the page */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Courier New', Courier, monospace, sans-serif;
   color: var(--text);
   background: var(--page);
   max-width: 760px;
   margin: 0 auto;
   padding: 0 16px 40px;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
 /* A bar at the top of every page */
-.nav { display: flex; gap: 16px; padding: 12px 0; font-weight: bold; }
-.nav a { color: var(--brand); text-decoration: none; }
+.nav { display: flex; gap: 16px; padding: 16px 0; font-weight: bold; font-family: monospace; }
+.nav a { color: var(--brand); text-decoration: none; text-shadow: 0 0 8px rgba(0, 255, 102, 0.4); }
+.nav a:hover { text-shadow: 0 0 12px rgba(0, 255, 102, 0.8); }
 
 /* The header: the biggest thing on the page says what the app is */
 .header {
-  background: var(--brand);
-  color: white;
-  padding: 20px 24px;
+  background: linear-gradient(135deg, #090e17 0%, #111a2e 100%);
+  color: #ffffff;
+  padding: 24px 28px;
   border-radius: 12px;
   margin-bottom: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 20px rgba(0, 255, 102, 0.1);
 }
-.header h1 { margin: 0 0 4px; }
-.header p { margin: 0; }
+.header h1 { margin: 0 0 6px; color: var(--brand); text-shadow: 0 0 10px rgba(0, 255, 102, 0.3); font-family: monospace; letter-spacing: 1px; }
+.header p { margin: 0; color: var(--muted); }
 
 /* The picture on the landing page */
-.hero { width: 100%; border-radius: 12px; margin-bottom: 24px; display: block; }
+.hero { width: 100%; border-radius: 12px; margin-bottom: 24px; display: block; border: 1px solid var(--border); box-shadow: 0 0 15px rgba(0, 255, 102, 0.15); }
 
-/* Cards: a white box groups things that belong together */
+/* Cards: a dark box groups things that belong together */
 .card {
-  background: white;
+  background: var(--card-bg);
   border-radius: 12px;
-  padding: 20px 24px;
+  padding: 24px;
   margin-bottom: 24px;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--border);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(0, 255, 102, 0.05);
 }
+.card h2 { color: var(--brand); font-family: monospace; font-size: 1.2rem; margin-top: 0; }
 .steps { display: flex; gap: 12px; flex-wrap: wrap; margin: 16px 0; }
-.step { flex: 1; min-width: 160px; background: var(--page); border-radius: 10px; padding: 12px 14px; }
-label { display: block; font-weight: bold; margin: 12px 0 6px; }
-input, textarea { width: 100%; box-sizing: border-box; font: inherit; padding: 8px; }
+.step { flex: 1; min-width: 160px; background: #05070c; border-radius: 8px; padding: 14px; border: 1px solid rgba(0, 255, 102, 0.2); }
+label { display: block; font-weight: bold; margin: 14px 0 6px; color: var(--brand); font-family: monospace; font-size: 0.9rem; }
+input, textarea {
+  width: 100%;
+  box-sizing: border-box;
+  font: inherit;
+  padding: 10px;
+  background: #030508;
+  color: var(--brand);
+  border: 1px solid rgba(0, 255, 102, 0.4);
+  border-radius: 6px;
+  outline: none;
+}
+input:focus, textarea:focus {
+  border-color: var(--brand);
+  box-shadow: 0 0 10px rgba(0, 255, 102, 0.3);
+}
 button, .button {
   display: inline-block;
   margin-top: 16px;
-  background: var(--brand);
-  color: white;
+  background: linear-gradient(135deg, #00ff66 0%, #00b34d 100%);
+  color: #030508;
   border: none;
   border-radius: 8px;
   padding: 10px 20px;
   font: inherit;
   font-weight: bold;
   text-decoration: none;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 15px rgba(0, 255, 102, 0.3);
+  transition: all 0.2s ease;
 }
-.answer { font-size: 18px; white-space: pre-wrap; border-left: 6px solid var(--brand); }
-.note { color: var(--muted); font-size: 14px; }
+button:hover, .button:hover {
+  background: linear-gradient(135deg, #1aff75 0%, #00cc55 100%);
+  box-shadow: 0 0 25px rgba(0, 255, 102, 0.6);
+}
+.answer { font-size: 16px; white-space: pre-wrap; border-left: 6px solid var(--brand); padding-left: 16px; background: #030508; padding: 16px; border-radius: 6px; border: 1px solid rgba(0, 255, 102, 0.2); }
+.note { color: var(--muted); font-size: 13px; font-family: monospace; }
 """
 
 # The landing page: what the app is, who it is for, and one button to start. Make every line yours.
